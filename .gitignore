@@ -1,41 +1,46 @@
-# Compiled Lua sources
-luac.out
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+local Window = OrionLib:MakeWindow({Name = "❓ LUCKY BLOCKS Battlegrounds", HidePremium = false, IntroEnabled = false, IntroText = false,SaveConfig = true, ConfigFolder = "OrionTest"})
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+OrionLib:MakeNotification({
+	Name = "Thanks",
+	Content = "Thanks for using!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
 
-# Precompiled Headers
-*.gch
-*.pch
+local Tab = Window:MakeTab({
+	Name = "Spawn",
+	Icon = "rbxassetid://2795572803",
+	PremiumOnly = false
+})
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+Tab:AddButton({
+	Name = "Lucky",
+	Callback = function()
+game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+  	end    
+})
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+Tab:AddButton({
+	Name = "Diamond",
+	Callback = function()
+      game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()  
+  	end    
+})
 
+Tab:AddButton({
+	Name = "Galaxy",
+	Callback = function()
+game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Rainbow",
+	Callback = function()
+game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+  	end    
+})
+OrionLib:Init()
